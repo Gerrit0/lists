@@ -1,0 +1,23 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish-site:
+  runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Fix remote
+        run: git remote set-url origin git@github.com:TypeStrong/typedoc-site.git
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+      - name: Install
+        run: npm ci
+      - name: Rebuild markdown site
+        run: npm run build
+      - name: Publish
+        run: npm run publish
