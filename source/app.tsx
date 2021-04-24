@@ -70,9 +70,7 @@ export class TodoList extends Component<{}, State> {
 
     const active = this.state.lists[this.state.active];
 
-    const update = (event?: Event) => {
-      const e = event as KeyboardEvent | undefined;
-
+    const update = () => {
       const items = Array.from(
         this.activeItems.current!.querySelectorAll("input"),
         (el) => el.value
@@ -147,7 +145,7 @@ export class TodoList extends Component<{}, State> {
               onClick={() => this.setState({ active: idx })}
               class={idx === this.state.active ? "active" : ""}
             >
-              {list.name}
+              {list.name} ({list.items.length})
             </li>
           );
         })}
