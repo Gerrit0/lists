@@ -72,9 +72,6 @@ export class TodoList extends Component<{}, State> {
 
     const update = (event?: Event) => {
       const e = event as KeyboardEvent | undefined;
-      if (e?.key === "Enter") {
-        this.newItem.current?.focus();
-      }
 
       const items = Array.from(
         this.activeItems.current!.querySelectorAll("input"),
@@ -89,6 +86,16 @@ export class TodoList extends Component<{}, State> {
       });
     };
 
+    const enter = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        this.newItem.current?.focus();
+      } else if (event.key == "ArrowDown") {
+        (event.target as any).parentElement?.nextElementSibling?.lastElementChild?.focus();
+      } else if (event.key == "ArrowUp") {
+        (event.target as any).parentElement?.previousElementSibling?.lastElementChild?.focus();
+      }
+    };
+
     const markCompleted = (idx: number) => {
       (this.activeItems.current!.children[idx]
         .lastElementChild as HTMLInputElement).value = "";
@@ -99,7 +106,12 @@ export class TodoList extends Component<{}, State> {
       return (
         <li key={idx}>
           <button onClick={() => markCompleted(idx)}>✓</button>
-          <input class="list-item" value={value} onInput={update} />
+          <input
+            class="list-item"
+            value={value}
+            onInput={update}
+            onKeyUp={enter}
+          />
         </li>
       );
     });
@@ -111,6 +123,7 @@ export class TodoList extends Component<{}, State> {
           placeholder="New"
           ref={this.newItem}
           onInput={update}
+          onKeyUp={enter}
         />
       </li>
     );
