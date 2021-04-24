@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "14"
       - name: Install
-        run: yarn ci
+        run: yarn
       - name: Rebuild markdown site
         run: yarn build
       - name: Publish
