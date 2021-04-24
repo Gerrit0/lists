@@ -21,10 +21,6 @@ main > nav {
   grid-area: nav;
 }
 
-nav button {
-  font-size: 16px;
-}
-
 main > .lists {
   grid-area: lists;
   border-right: 1px solid black;
@@ -70,8 +66,13 @@ main > .active-list {
 }
 
 @media screen and (max-width: 500px) {
-  input {
+  input,
+  button {
     font-size: 16px;
+  }
+
+  button {
+    border-radius: 0;
   }
 
   main {
