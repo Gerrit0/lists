@@ -142,7 +142,7 @@ export class TodoList extends Component<{}, State> {
           return (
             <li
               key={idx}
-              onClick={() => this.setState({ active: idx })}
+              onClick={() => this.setState({ active: idx, menuActive: false })}
               class={idx === this.state.active ? "active" : ""}
             >
               {list.name} ({list.items.length})
