@@ -12,6 +12,6 @@
   },
   "scripts": {
     "build": "esbuild source/index.tsx --bundle --minify --sourcemap --target=chrome89,safari11 --outfile=build/bundle.js",
-    "publish": "gh-pages -d build"
+    "site": "gh-pages -d build"
   }
 }

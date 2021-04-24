@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: "14"
       - name: Install
-        run: npm ci
+        run: yarn ci
       - name: Rebuild markdown site
-        run: npm run build
+        run: yarn build
       - name: Publish
-        run: npm run publish
+        run: yarn site
