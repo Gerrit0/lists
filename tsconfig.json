@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "lib": ["ES2019"],
+    "target": "ES2019",
+    "strict": true,
+    "alwaysStrict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+
+    "jsx": "react",
+    "jsxFactory": "createElement",
+    "jsxFragmentFactory": "Fragment",
+
+    "sourceMap": true,
+    "isolatedModules": true,
+
+    "rootDir": "source"
+  },
+  "include": ["source"]
+}

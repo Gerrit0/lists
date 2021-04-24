@@ -1,0 +1,15 @@
+{
+  "name": "lists",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.11.14",
+    "preact": "^10.5.13",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "build": "esbuild source/index.tsx --bundle --minify --sourcemap --target=chrome89,safari11 --outfile=build/bundle.js"
+  }
+}
