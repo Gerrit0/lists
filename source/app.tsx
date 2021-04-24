@@ -13,6 +13,7 @@ export interface List {
 
 export class TodoList extends Component<{}, State> {
   newList = createRef<HTMLInputElement>();
+  newItem = createRef<HTMLInputElement>();
   activeItems = createRef<HTMLUListElement>();
 
   constructor() {
@@ -69,7 +70,12 @@ export class TodoList extends Component<{}, State> {
 
     const active = this.state.lists[this.state.active];
 
-    const update = () => {
+    const update = (event?: Event) => {
+      const e = event as KeyboardEvent | undefined;
+      if (e?.key === "Enter") {
+        this.newItem.current?.focus();
+      }
+
       const items = Array.from(
         this.activeItems.current!.querySelectorAll("input"),
         (el) => el.value
@@ -100,7 +106,12 @@ export class TodoList extends Component<{}, State> {
     items.push(
       <li key={active.items.length}>
         <span />
-        <input class="list-item" placeholder="New" onInput={update} />
+        <input
+          class="list-item"
+          placeholder="New"
+          ref={this.newItem}
+          onInput={update}
+        />
       </li>
     );
 
